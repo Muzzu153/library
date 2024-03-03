@@ -2,7 +2,7 @@
   font-size: 62.5%;
 }
 
-*  {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,24 +11,38 @@
 body {
   font-size: 1.6rem;
   line-height: 1.2;
-  background: rgb(255, 255, 255);
-}
-
-#header {
-  display: flex;
-  justify-content: space-between;
   background: radial-gradient(
     circle at 10% 20%,
     rgb(0, 0, 0) 0%,
     rgb(64, 64, 64) 90.2%
   );
+  height: 100vh;
+}
+
+.wrapper {
+  margin: auto;
+}
+
+#header {
   padding: 1.2em 0.8em;
+  border-bottom: 1px solid white;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 122rem;
+  }
 
   .logo {
     font-size: 1.8rem;
     color: white;
     /* padding: 1.5em; */
     align-self: center;
+  }
+
+  .logo:hover {
+    cursor: pointer;
   }
 
   label {
@@ -41,7 +55,7 @@ body {
   }
 }
 
-form{
+form {
   align-self: center;
 }
 
@@ -57,7 +71,7 @@ input {
   border-bottom-left-radius: 2px;
 }
 
-button {
+#search-btn {
   all: unset;
   appearance: none;
   font-size: 1rem;
@@ -69,43 +83,164 @@ button {
   position: relative;
   translate: -4px -1px;
   display: inline-block;
-  svg{
+
+  svg {
     vertical-align: top;
-    /* display: block; */
   }
 }
 
-#search-btn:focus{
-  background:  rgb(64, 64, 64) 90.2%;
+#search-btn:focus {
+  background: rgb(64, 64, 64) 90.2%;
   border: 0.5px solid rgb(255, 255, 255);
   cursor: pointer;
-  svg{
+  svg {
     fill: white;
-   }
+  }
 }
 
-.single-book{
+#book-list {
+  margin: auto;
+  max-width: 50rem;
+}
+.single-book {
   /* width: 100%; */
   /* display: inline; */
   border: 2px solid black;
 }
 
-#add-book{
+#add-book {
   font-size: 1.8rem;
   text-align: center;
-  border: 0.5px solid black;
-  svg{
+  display: block;
+  margin: auto;
+  border-radius: 4px;
+  padding: 0.5em;
+  border: none;
+
+  svg {
     padding: 0;
     margin: 0;
     height: 100%;
-    border: 0.5px solid black;
     vertical-align: top;
   }
 }
 
-.keys{
+#add-book:hover {
+  background: #ccc;
+}
+
+#add-book:active,
+#add-book:focus {
+  background: #ccc;
+  transition: 0.3s;
+  transform: scale(0.9);
+}
+
+.single-books > div > p {
+  display: inline-block;
+}
+
+.card {
+  padding: 0em;
+  margin: 0.5em 0.4em;
+  background: rgb(240, 237, 237);
+  border-radius: 5px;
+}
+
+.single-books {
+  margin: 1em auto;
   padding: 1em;
-  border: 0.1px solid black;
-  background: #ff0000;
+  width: 90%;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+#title,
+#read-status {
+  padding-top: 0.5em;
+}
+
+.keys {
+  width: 30%;
+  padding: 1em 1em;
+}
+
+.values {
+  /* padding: 1em; */
+  width: 60%;
+}
+
+#read-status {
+  text-align: center;
+
+  p {
+    display: inline-block;
+  }
+
+  label {
+    margin: auto;
+  }
+}
+
+/* The switch - the box around the slider */
+.toggle-switch{
+  /* margin: 2rem 0; */
+  /* margin-bottom: 2rem; */
+  padding: 1em 3em;
+  display: flex;
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  /* gap: 1em; */
+}
+
+.switch {
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+  /* margin: 20px 0; */
+}
+
+/* Hide default HTML checkbox */
+/* .switch input {
+  opacity: 1;
+  width: 0;
+  height: 0;
+} */
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ff0000;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.5rem;
+  width: 1.5rem;
+  left: 8%;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  left: 55%;
 }
 
