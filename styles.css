@@ -1,13 +1,111 @@
-:root{
-    font-size: 62.5%;
+:root {
+  font-size: 62.5%;
 }
 
-*{
-    box-sizing: border-box;
-    margin: 0;
+*  {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  background: rgb(255, 255, 255);
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(0, 0, 0) 0%,
+    rgb(64, 64, 64) 90.2%
+  );
+  padding: 1.2em 0.8em;
+
+  .logo {
+    font-size: 1.8rem;
+    color: white;
+    /* padding: 1.5em; */
+    align-self: center;
+  }
+
+  label {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+}
+
+form{
+  align-self: center;
+}
+
+input {
+  all: unset;
+  appearance: none;
+  font-size: 1rem;
+  padding: 0.5em 0em;
+  width: 12em;
+  background: rgb(255, 255, 255);
+  border: none;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+button {
+  all: unset;
+  appearance: none;
+  font-size: 1rem;
+  border: 0.5px solid rgb(255, 255, 255);
+  padding: 0.3em;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background: rgb(255, 255, 255);
+  position: relative;
+  translate: -4px -1px;
+  display: inline-block;
+  svg{
+    vertical-align: top;
+    /* display: block; */
+  }
+}
+
+#search-btn:focus{
+  background:  rgb(64, 64, 64) 90.2%;
+  border: 0.5px solid rgb(255, 255, 255);
+  cursor: pointer;
+  svg{
+    fill: white;
+   }
+}
+
+.single-book{
+  /* width: 100%; */
+  /* display: inline; */
+  border: 2px solid black;
+}
+
+#add-book{
+  font-size: 1.8rem;
+  text-align: center;
+  border: 0.5px solid black;
+  svg{
     padding: 0;
+    margin: 0;
+    height: 100%;
+    border: 0.5px solid black;
+    vertical-align: top;
+  }
 }
 
-body{
-    font-size: 1.6rem;
+.keys{
+  padding: 1em;
+  border: 0.1px solid black;
+  background: #ff0000;
 }
+

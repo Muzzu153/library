@@ -19,64 +19,85 @@
         <!-- Header with the logo(name) and search bar -->
         <header class="header" id="header">
             <!-- logo -->
-            <div class="logo">Library</div>
 
-            <!-- Search ba -->
-            <form action="" role="search" method="get">
-
-                <!-- Label for search ba -->
-                <label for="search">Search Bar</label>
-
-                <input aria-label="Search books" autocomplete="off" id="search" type="search" class="input"
-                    name="search" placeholder="Search book...">
-
-                <button id="search-btn" type="button" aria-label="Go">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14">
-                        <path
-                            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-                    </svg>
-                </button>
-
-            </form>
+            <div class="header-container">
+                <div class="logo">Library</div>
+                <!-- Search ba -->
+                <form action="" role="search" method="get">
+                    <!-- Label for search ba -->
+                    <label for="search">Search Bar</label>
+                    <input aria-label="Search books" autocomplete="off" id="search" type="search" class="input"
+                        name="search" placeholder="Search book...">
+                    <button id="search-btn" type="button" aria-label="Go">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14">
+                            <path
+                                d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </header>
 
         <!-- Where the books will be displayed  -->
         <main>
-            <div class="books-list" id="books">
-                <div class="single-book" >
-                    <div id="title">
-                        <span id="title-key" class="keys">
-                            Title
-                        </span>
-                        <span id="title-value" class="values">
+            <div class="books" id="book-list">
+                <div class="single-books">
+                    <div id="title" class="card">
+                        <p class="keys" id="title-key">
+                            Title:
+                        </p>
+                        <p class="values" id="title-value">
                             Men are from mars, women are from venus
-                        </span>
+                        </p>
                     </div>
-                    <div id="author">
-                        <span id="author-key" class="keys">
+                    <div id="author" class="card">
+                        <p class="keys" id="author-key">
                             Author:
-                        </span>
-                        <span id="author-value" class="values">
+                        </p>
+                        <p class="values" id="author-value">
                             John Gray
-                        </span>
+                        </p>
                     </div>
-                    <div id="title">
-                        <span id="pages-key" class="keys">
+                    <div id="pages" class="card">
+                        <p class="keys" id="pages-key">
                             Pages:
-                        </span>
-                        <span id="pages-value" class="values">
+                        </p>
+                        <p class="values" id="pages-value">
                             286
-                        </span>
+                        </p>
+                    </div>
+                    <div id="read-status" class="card">
+                        <p>Read status</p>
+                        <div class="toggle-switch">
+                            <div>No</div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            <div>Yes</div>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <!-- <button id="add-book">Add Book
-                <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="50"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
-            </button> -->
+            <button type="button" id="add-book">
+                <!-- <p>Add Book </p> -->
+                <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="50">
+                    <path
+                        d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
+                </svg>
+            </button>
         </main>
 
     </div>
+
+    <div class="switch-container">
+        <!-- <div class="switch2"></div> -->
+        <!-- <div class="switch2"> -->
+        <input class="switch2" type="checkbox">
+        <!-- </div> -->
+    </div>
+    <div class="toggle"></div>
 </body>
 
 </html>
