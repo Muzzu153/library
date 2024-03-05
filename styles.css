@@ -37,7 +37,6 @@ body {
   .logo {
     font-size: 1.8rem;
     color: white;
-    /* padding: 1.5em; */
     align-self: center;
   }
 
@@ -55,15 +54,11 @@ body {
   }
 }
 
-form {
-  align-self: center;
-}
-
-input {
+.header-container input {
   all: unset;
   appearance: none;
   font-size: 1rem;
-  padding: 0.5em 0em;
+  padding: 0.5em 0.4em;
   width: 12em;
   background: rgb(255, 255, 255);
   border: none;
@@ -129,11 +124,14 @@ input {
   background: #ccc;
 }
 
-#add-book:active,
+#add-book:active {
+  background: #ccc;
+  transition: 0.4s;
+  transform: scale(0.8);
+}
+
 #add-book:focus {
   background: #ccc;
-  transition: 0.3s;
-  transform: scale(0.9);
 }
 
 .single-books > div > p {
@@ -153,11 +151,11 @@ input {
   width: 90%;
   background: #ffffff;
   border-radius: 5px;
-}
 
-#title,
-#read-status {
-  padding-top: 0.5em;
+  #title,
+  #read-status {
+    padding-top: 0.5em;
+  }
 }
 
 .keys {
@@ -183,29 +181,23 @@ input {
 }
 
 /* The switch - the box around the slider */
-.toggle-switch{
-  /* margin: 2rem 0; */
-  /* margin-bottom: 2rem; */
+.toggle-switch {
   padding: 1em 3em;
   display: flex;
-  /* flex-direction: row; */
-  /* justify-content: center; */
-  /* gap: 1em; */
 }
 
 .switch {
   position: relative;
   width: 4rem;
   height: 2rem;
-  /* margin: 20px 0; */
 }
 
 /* Hide default HTML checkbox */
-/* .switch input {
-  opacity: 1;
+.switch input {
+  opacity: 0;
   width: 0;
   height: 0;
-} */
+}
 
 /* The slider */
 .slider {
@@ -215,7 +207,7 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ff0000;
+  background-color: #e20505;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -232,15 +224,115 @@ input {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+.switch input:checked + .slider {
   background-color: #2196f3;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+.switch input:focus + .slider:focus {
+  background: 0 0 1px #ffffff;
 }
 
-input:checked + .slider:before {
+.switch input:checked + .slider:before {
   left: 55%;
 }
 
+.modal {
+  border-radius: 8px;
+  margin: auto;
+  border: none;
+  transform: scale(1);
+
+  form div {
+    padding: 0.5em 1em;
+    display: block;
+    margin: auto;
+  }
+
+  form {
+    padding: 0.5em 0;
+  }
+
+  form .modal-read-status {
+    text-align: center;
+  }
+
+  .confirmation-btns {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2em;
+  }
+
+  button {
+    appearance: none;
+    all: unset;
+    border-radius: 4px;
+    padding: 1em 1.5em;
+    border: 0.5px solid black;
+    color: white;
+    font-weight: 700;
+    transition: 0.2s;
+  }
+
+  button:active, button:focus{
+    transform: scale(0.9);
+  }
+
+  .cancel-btn {
+    background: #e20505;
+  }
+
+  .confirm-btn {
+    background: #2196f3;
+  }
+
+  .cancel-btn:hover, .cancel-btn:active, .cancel-btn:focus{
+    cursor: pointer;
+    background: #ca0707;      
+  }
+
+  .confirm-btn:hover, .confirm-btn:active, .confirm-btn:focus{
+    cursor: pointer;
+    background: #157ed4;
+  }
+
+}
+
+.form-controls {
+  input {
+    all: unset;
+    appearance: none;
+    display: block;
+    background: rgb(240, 237, 237);
+    padding: 0.3em 0.5em;
+    margin: 0.5em 0em 0.5em 0em;
+  }
+}
+
+dialog::backdrop {
+  background: #414141;
+  opacity: 0.5;
+}
+
+dialog[open]{
+  animation: popup 0.1s ease-in forwards;
+}
+
+@keyframes popup{
+  0%{
+    transform: scale(0);
+  }
+
+  25%{
+    transform: scale(0.25);
+  }
+
+  50%{
+    transform: scale(0.5)
+  }
+  75%{
+    transform: scale(0.75);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
