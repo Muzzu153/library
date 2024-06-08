@@ -1,5 +1,13 @@
 :root {
   font-size: 62.5%;
+  --gradientBlackBg: radial-gradient(
+    circle at 10% 20%,
+    rgb(0, 0, 0) 0%,
+    rgb(64, 64, 64) 90.2%
+  );
+  --fontColor: rgb(255, 255, 255);
+  --borderWhite: rgb(255, 255, 255);
+  --whiteBg: rgb(255, 255, 255);
 }
 
 * {
@@ -11,11 +19,7 @@
 body {
   font-size: 1.6rem;
   line-height: 1.2;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(0, 0, 0) 0%,
-    rgb(64, 64, 64) 90.2%
-  );
+  background: var(--gradientBlackBg);
   height: 100vh;
 }
 
@@ -25,7 +29,7 @@ body {
 
 #header {
   padding: 1.2em 0.8em;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--borderWhite);
 
   .header-container {
     display: flex;
@@ -36,7 +40,7 @@ body {
 
   .logo {
     font-size: 1.8rem;
-    color: white;
+    color: var(--fontColor);
     align-self: center;
   }
 
@@ -60,7 +64,7 @@ body {
   font-size: 1rem;
   padding: 0.5em 0.4em;
   width: 12em;
-  background: rgb(255, 255, 255);
+  background: var(--whiteBg);
   border: none;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
@@ -70,11 +74,11 @@ body {
   all: unset;
   appearance: none;
   font-size: 1rem;
-  border: 0.5px solid rgb(255, 255, 255);
+  border: 0.5px solid var(--borderWhite);
   padding: 0.3em;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  background: rgb(255, 255, 255);
+  background: var(--whiteBg);
   position: relative;
   translate: -4px -1px;
   display: inline-block;
@@ -86,28 +90,79 @@ body {
 
 #search-btn:focus {
   background: rgb(64, 64, 64) 90.2%;
-  border: 0.5px solid rgb(255, 255, 255);
+  border: 0.5px solid var(--borderWhite);
   cursor: pointer;
   svg {
-    fill: white;
+    fill: var(--whiteBg);
   }
 }
 
 #book-list {
   margin: auto;
-  max-width: 50rem;
+  display: grid;
+  /* width: 1500px; */
+  max-width: 62.5em;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  /* grid-template-columns: 1fr 1fr 1fr; */
 }
-.single-book {
-  /* width: 100%; */
-  /* display: inline; */
-  border: 2px solid black;
+
+
+
+.single-books > div > p {
+  display: inline-block;
+}
+
+.card {
+  padding: 0em;
+  margin: 0.5em 0.4em;
+  background: rgb(240, 237, 237);
+  border-radius: 5px;
+}
+
+.single-books {
+  margin: 1em auto;
+  padding: 1em;
+  width: 90%;
+  background: var(--whiteBg);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  #title,
+  #read-status {
+    padding-top: 0.5em;
+  }
+}
+
+.keys {
+  width: 30%;
+  padding: 1em;
+  margin-right: 1em;
+}
+
+.values {
+  padding: 1em;
+  width: 60%;
+}
+
+#read-status {
+  text-align: center;
+  
+  p {
+    display: inline-block;
+  }
+  
+  label {
+    margin: auto;
+  }
 }
 
 #add-book {
   font-size: 1.8rem;
   text-align: center;
   display: block;
-  margin: auto;
+  margin: 2em auto;
   border-radius: 4px;
   padding: 0.5em;
   border: none;
@@ -132,52 +187,6 @@ body {
 
 #add-book:focus {
   background: #ccc;
-}
-
-.single-books > div > p {
-  display: inline-block;
-}
-
-.card {
-  padding: 0em;
-  margin: 0.5em 0.4em;
-  background: rgb(240, 237, 237);
-  border-radius: 5px;
-}
-
-.single-books {
-  margin: 1em auto;
-  padding: 1em;
-  width: 90%;
-  background: #ffffff;
-  border-radius: 5px;
-
-  #title,
-  #read-status {
-    padding-top: 0.5em;
-  }
-}
-
-.keys {
-  width: 30%;
-  padding: 1em 1em;
-}
-
-.values {
-  /* padding: 1em; */
-  width: 60%;
-}
-
-#read-status {
-  text-align: center;
-
-  p {
-    display: inline-block;
-  }
-
-  label {
-    margin: auto;
-  }
 }
 
 /* The switch - the box around the slider */
@@ -207,19 +216,19 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #e20505;
+  /* background-color: #e20505; */
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
-.slider:before {
+.slider::before {
   position: absolute;
   content: "";
   height: 1.5rem;
   width: 1.5rem;
   left: 8%;
   bottom: 3px;
-  background-color: white;
+  background: var(--whiteBg);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -229,7 +238,7 @@ body {
 }
 
 .switch input:focus + .slider:focus {
-  background: 0 0 1px #ffffff;
+  background: 0 0 1px var(--whiteBg);
 }
 
 .switch input:checked + .slider:before {
@@ -237,6 +246,7 @@ body {
 }
 
 .modal {
+  /* overflow-x: scroll; */
   border-radius: 8px;
   margin: auto;
   border: none;
@@ -268,33 +278,37 @@ body {
     border-radius: 4px;
     padding: 1em 1.5em;
     border: 0.5px solid black;
-    color: white;
+    color: var(--fontColor);
     font-weight: 700;
     transition: 0.2s;
   }
 
-  button:active, button:focus{
+  button:active,
+  button:focus {
     transform: scale(0.9);
   }
 
-  .cancel-btn {
+  #cancel-btn {
     background: #e20505;
   }
 
-  .confirm-btn {
+  #confirm-btn {
     background: #2196f3;
   }
 
-  .cancel-btn:hover, .cancel-btn:active, .cancel-btn:focus{
+  #cancel-btn:hover,
+  #cancel-btn:active,
+  #cancel-btn:focus {
     cursor: pointer;
-    background: #ca0707;      
+    background: #ca0707;
   }
 
-  .confirm-btn:hover, .confirm-btn:active, .confirm-btn:focus{
+  #confirm-btn:hover,
+  #confirm-btn:active,
+  #confirm-btn:focus {
     cursor: pointer;
     background: #157ed4;
   }
-
 }
 
 .form-controls {
@@ -305,34 +319,86 @@ body {
     background: rgb(240, 237, 237);
     padding: 0.3em 0.5em;
     margin: 0.5em 0em 0.5em 0em;
+    border-radius: 4px;
   }
+}
+
+.modal-read-status input {
+  appearance: none;
+  border: 0.5px solid black;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-read-status input:checked::before {
+  content: "";
+  width: 70%;
+  height: 70%;
+  left: 15%;
+  top: 15%;
+  background: var(--gradientBlackBg);
+  position: absolute;
+}
+
+.form-controls input:active,
+.form-controls input:focus {
+  background: var(--gradientBlackBg);
+  color: var(--fontColor);
 }
 
 dialog::backdrop {
-  background: #414141;
-  opacity: 0.5;
+  background: #2c2c2c;
+  opacity: 0.7;
 }
 
-dialog[open]{
-  animation: popup 0.1s ease-in forwards;
+dialog[open] {
+  animation: popup 0.2s ease-in forwards;
 }
 
-@keyframes popup{
-  0%{
+dialog[closed] {
+  animation: popdown 0.2s ease-in forwards;
+}
+
+@keyframes popup {
+  0% {
     transform: scale(0);
   }
 
-  25%{
+  25% {
     transform: scale(0.25);
   }
 
-  50%{
-    transform: scale(0.5)
+  50% {
+    transform: scale(0.5);
   }
-  75%{
+  75% {
     transform: scale(0.75);
   }
-  100%{
+  100% {
     transform: scale(1);
+  }
+}
+
+@keyframes popdown {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(0.5);
+  }
+
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    transform: scale(0.25);
+  }
+  100% {
+    transform: scale(0);
   }
 }
