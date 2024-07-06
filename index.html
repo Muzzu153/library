@@ -22,7 +22,7 @@
 
             <div class="header-container">
                 <div class="logo">Library</div>
-                <!-- Search ba -->
+                <!-- Search bar -->
                 <form action="" role="search" method="get">
                     <!-- Label for search ba -->
                     <label for="search">Search Bar</label>
@@ -40,7 +40,7 @@
 
         <!-- Where the books will be displayed  -->
         <main>
-            <div class="books" id="book-list"> 
+            <div class="books" id="book-list">
                 <!-- <div class="single-books">
                     <div id="title" class="card">
                         <p class="keys" id="title-key">
@@ -80,7 +80,7 @@
                 </div> -->
             </div>
 
-            <button type="button" id="add-book">
+            <button type="submit" id="add-book">
                 <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="50">
                     <path
                         d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" />
@@ -88,34 +88,39 @@
             </button>
         </main>
 
+        <!-- <div>
+            dialog
+        </div> -->
 
-        <dialog class="modal">
-            <form autocomplete="on" action="">
-                <div id="modal-title" class="form-controls">
-                    <label for="new-title">Title</label>
-                    <input type="text" name="" id="new-title" required>
-                </div>
-                <div id="modal-author" class="form-controls">
-                    <label for="new-author">Author</label>
-                    <input type="text" name="" id="new-author" required>
-                </div>
-                <div id="modal-pages" class="form-controls">
-                    <label for="new-pages">Pages</label>
-                    <input type="number" name="" id="new-pages" required>
-                </div>
-                <div class="modal-read-status">
-                    <label>Have you read the book?</label>
-                    <input type="checkbox" name="" id="new-read-status">
-                </div>
-                <div class="confirmation-btns">
-                    <button type="button" id="cancel-btn" >Cancel</button>
-                    <button type="submit" id="confirm-btn">Confirm</button>
-                </div> 
-            </form>
-        </dialog>
-    </div>
+        <!-- <dialog> -->
+            <dialog class="modal">
+                <form autocomplete="on" action="">
+                    <div id="modal-title" class="form-controls">
+                        <label for="new-title">Title</label>
+                        <input type="text"  name="" id="new-title" required>
+                    </div>
+                    <div id="modal-author" class="form-controls">
+                        <label for="new-author">Author</label>
+                        <input type="text" name="" id="new-author" required>
+                    </div>
+                    <div id="modal-pages" class="form-controls">
+                        <label for="new-pages">Pages</label>
+                        <input type="number" name="" id="new-pages" required>
+                    </div>
+                    <div class="modal-read-status">
+                        <label>Have you read the book?</label>
+                        <input type="checkbox" id="new-read-status">
+                    </div>
+                    <div class="confirmation-btns">
+                        <button type="button" id="cancel-btn">CANCEL</button>
+                        <button type="submit" id="confirm-btn">CONFIRM</button>
+                    </div>
+                </form>
+            </dialog>
+            <!-- <form action="" autocomplete="on"></form> -->
+        <!-- </dialog> -->
 
-    <script src="./javascript/main.js"></script>
+        <script src="./javascript/main.js"></script>
 </body>
 
 </html>
