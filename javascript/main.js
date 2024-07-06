@@ -7,9 +7,9 @@ let cancelBtn = document
     modal.close();
   });
 
-// let slider = document.querySelector(".slider");
+let slider = document.querySelector(".slider");
 // console.log(slider.style.getPropertyValue("background-color"));
-// let changeReadStatus = document.getElementById("change-read-status");
+let changeReadStatus = document.getElementById("change-read-status");
 
 // changeReadStatus.addEventListener("change", function () {
 //   if (newReadStatus.checked === true) {
@@ -38,63 +38,42 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read);
-  // if (
-  //   !(newTitle.value === "") &&
-  //   !(newAuthor.value === "") &&
-  //   !(newPages.value === "")
-  // ) {
   myLibrary.push(newBook);
   console.log("book pushed");
-  // }
-
-  // for (let books of myLibrary) {
-  //   console.log(books);
-  // }
-  // newTitle.value = "";
-  // newAuthor.value = "";
-  // newPages.value = "";
-  // modal.close();
 }
 
 function getNewReadStatusInArray() {
   if (newReadStatus.checked === true) {
-    // newReadStatus.checked = true;
-     "on";
+    return true;
   } else {
-    // newReadStatus.checked = false;
-    return "off";
+    return false;
   }
+  // (newReadStatus.checked === true)? true : false
 }
 
-confirmBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  addBookToLibrary(
-    newTitle.value,
-    newAuthor.value,
-    newPages.value,
-    getNewReadStatusInArray()
-  );
-  console.log("value submitted");
+const resetModal = () => {
   newTitle.value = "";
   newAuthor.value = "";
   newPages.value = "";
   newReadStatus.checked = false;
-  displayBook(myLibrary);
-  modal.close();
-  // createBook();
-});
+};
 
-let dialog = document.querySelector(".modal");
-
-dialog.addEventListener("click", (e) => {
-  const dialogDimensions = dialog.getBoundingClientRect();
+confirmBtn.addEventListener("click", () => {
   if (
-    e.clientX < dialogDimensions.left ||
-    e.clientX > dialogDimensions.right ||
-    e.clientY < dialogDimensions.top ||
-    e.clientY > dialogDimensions.bottom
+    newTitle.value !== "" &&
+    newAuthor.value !== "" &&
+    newPages.value !== ""
   ) {
-    dialog.close();
+    addBookToLibrary(
+      newTitle.value,
+      newAuthor.value,
+      newPages.value,
+      getNewReadStatusInArray()
+    );
+    resetModal(), modal.close();
+    displayBook(myLibrary);
+    console.log("value submitted");
+    console.log(myLibrary)
   }
 });
 
@@ -108,22 +87,13 @@ searchBtn.addEventListener("click", (e) => {
   console.log(search.value);
 });
 
-function addBookInDOM() {}
-
-function iterateLibrary(arr) {
-  for (let books of arr) {
-    //if (key === "title") {
-    for (let key in books) console.log(books[key]);
-  }
-}
-//}
-
 let bookList = document.getElementById("book-list");
+
 function displayBook(library) {
   while (bookList.hasChildNodes()) {
     bookList.removeChild(bookList.firstChild);
   }
-  console.log(myLibrary[myLibrary.length - 1]);
+  console.log(`${myLibrary[myLibrary.length - 1]} books`);
 
   library.forEach((book) => {
     console.log("book iterated");
@@ -132,38 +102,28 @@ function displayBook(library) {
   });
 }
 
-
-
 function createBook(book) {
-  // let builtInBook = document.querySelector(".single-books");
-
-  // bookList.has
-
-  // book.title
-
-  // myLibrary.forEach((book) =>{
   let singleBook = document.createElement("div");
-  // bookList.appendChild(singleBook);
-  singleBook.classList.add("single-books");
 
-  // builtInBook.insertAdjacentElement(singleBook);
+  singleBook.classList.add("single-books");
 
   let titleDiv = document.createElement("div");
   titleDiv.classList.add("card");
-  singleBook.appendChild(titleDiv);
 
   let authorDiv = document.createElement("div");
   authorDiv.classList.add("card");
-  titleDiv.insertAdjacentElement("afterend", authorDiv);
+  // titleDiv.insertAdjacentElement("afterend", authorDiv);
 
   let pagesDiv = document.createElement("div");
   pagesDiv.classList.add("card");
-  authorDiv.insertAdjacentElement("afterend", pagesDiv);
+  // authorDiv.insertAdjacentElement("afterend", pagesDiv);
 
   let readStatusDiv = document.createElement("div");
   readStatusDiv.id = "read-status";
   readStatusDiv.classList.add("card");
-  pagesDiv.insertAdjacentElement("afterend", readStatusDiv);
+  // pagesDiv.insertAdjacentElement("afterend", readStatusDiv);
+
+  singleBook.append(titleDiv, authorDiv, pagesDiv, readStatusDiv);
 
   let titleKey = document.createElement("p");
   titleKey.classList.add("keys");
@@ -194,29 +154,26 @@ function createBook(book) {
   switchLabel.appendChild(switchInput);
   switchInput.type = "checkbox";
 
-  
   let switchSpan = document.createElement("span");
   switchSpan.classList.add("slider");
   switchInput.insertAdjacentElement("afterend", switchSpan);
-  
 
-  console.log('if statement below')
+  console.log("if statement below");
 
-  function sliderBgColor(){
-    if(newReadStatus.checked === true){
+  function sliderBgColor() {
+    if (newReadStatus.checked === true) {
       switchInput.checked = true;
-      console.log('book read')
-      return switchSpan.style.backGroundColor = "blue"
-    }
-    else{
+      console.log("book read");
+      return (switchSpan.style.backGroundColor = "blue");
+    } else {
       switchInput.checked = false;
-      return switchSpan.style.backGroundColor = "red"
+      return (switchSpan.style.backGroundColor = "red");
     }
   }
 
   sliderBgColor();
 
-  console.log('if statement above')
+  console.log("if statement above");
 
   toggleSwitch.appendChild(notRead);
   notRead.insertAdjacentElement("afterend", switchLabel);
@@ -252,12 +209,14 @@ function createBook(book) {
   return singleBook;
 }
 
+function updateReadStatus(book){
 
+}
 
 addBookToLibrary(
-  "Men are from mars, Women are from venus",
-  "John Gray",
-  286,
+  "Atomic Habits",
+  "James Clear",
+  320,
   "on"
 );
 
